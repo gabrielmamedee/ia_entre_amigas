@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" >
+<head>
+  <meta charset="UTF-8">
+  <title>ia - CidadeViva</title>
+  <link rel="stylesheet" href="{% static 'word_cloud/css/style.css'%}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<canvas id="canvas"></canvas>
+<!-- partial -->
+  <script src='https://unpkg.com/chart.js@4'></script>
+<script src='https://unpkg.com/chartjs-chart-wordcloud@4'></script>
+<script  src="{% static 'word_cloud/js/script.js'%}"></script>
+
+</body>
+</html>
