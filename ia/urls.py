@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('nuvem/', include('word_cloud.urls'))
+    path('', include('word_cloud.urls'))
 ]
