@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
 import json
+import os
 
 def view_the_cloud(request):
      
@@ -8,6 +9,6 @@ def view_the_cloud(request):
           return render(request, 'index.html')
      
      elif request.method == "POST":
-          palavras = request.POST.get('valor')
-          print(palavras)
-          return render(request, 'pesquisa.html', {'palavras':palavras})
+          valor = request.POST.get('valor')
+          
+          return render(request, 'pesquisa.html', {'valor':valor})
