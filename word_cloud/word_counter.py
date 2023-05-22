@@ -20,10 +20,12 @@ palavras_comuns = contagem.most_common()
 
 palavras_comuns.sort(key=lambda x: x[1], reverse=True)
 
-limite_palavras = 201
+limite_palavras = 230
 contador = 0
 
 caminho_saida = "../templates/static/word_cloud/js/script.js"
+
+print (palavras_comuns [200])
 
 with open(caminho_saida, "w") as arquivo_saida:
     arquivo_saida.write("const words = [\n")
@@ -35,22 +37,22 @@ with open(caminho_saida, "w") as arquivo_saida:
             elif contador == 1:
                 arquivo_saida.write(f'  {{ key: "{palavra}", value: 8 }},\n')
                 contador += 1
-            elif contador == 2:
+            elif contador > 1 and contador <= 5:
                 arquivo_saida.write(f'  {{ key: "{palavra}", value: 7 }},\n')
                 contador += 1
-            elif contador == 3:
+            elif contador > 5 and contador <= 8:
                 arquivo_saida.write(f'  {{ key: "{palavra}", value: 5 }},\n')
                 contador += 1
-            elif contador > 3 and contador <= 6:
+            elif contador > 8 and contador <= 11:
                 arquivo_saida.write(f'  {{ key: "{palavra}", value: 4 }},\n')
                 contador += 1
-            elif contador > 6 and contador <= 25:
+            elif contador > 11 and contador <= 35:
                 arquivo_saida.write(f'  {{ key: "{palavra}", value: 3 }},\n')
                 contador += 1
-            elif contador > 25 and contador <= 65:
+            elif contador > 35 and contador <= 125:
                 arquivo_saida.write(f'  {{ key: "{palavra}", value: 2 }},\n')
                 contador += 1
-            elif contador > 65 and contador <= 200:
+            elif contador > 125 and contador <= 200:
                 arquivo_saida.write(f'  {{ key: "{palavra}", value: 1 }},\n')
                 contador += 1
             if contador == limite_palavras:
