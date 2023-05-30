@@ -32,7 +32,7 @@
 
 <body class="index-page bg-gray-200">
   
-  <!-- Navbar Transparent -->
+  <!-- Navbar Transparent 
   <nav
   class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent">
   <div class="container">
@@ -470,7 +470,7 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav>-->
 <!-- End Navbar -->
 
   
@@ -522,11 +522,75 @@
   </div>
 </section>
 
+<div class="container mt-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if page.has_previous %}
+      <li class="page-item"><a class="page-link" href="{% url 'view_the_cloud' %}?page={{page.previous_page_number}}"><</a></li>
+      {% endif %}
+      {% if page.has_next %}
+      <li class="page-item"><a class="page-link" href="{% url 'view_the_cloud' %}?page={{page.next_page_number}}">></a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+<section class="container">
+  <div class="card">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xl font-weight-bolder opacity-7 ps-md-3">Palavra</th>
+              <th class="text-uppercase text-secondary text-xl font-weight-bolder opacity-7 ps-2">Frequencia</th>
+              <th class="text-uppercase text-secondary text-xl font-weight-bolder opacity-7 ps-2">Function</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for palavra in page.object_list %}
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0">{{ palavra.key }}</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                    <h6 class="mb-0">{{ palavra.frequencia }}</h6>
+                </td>
+                <td class="align-middle">
+                  <a href="javascript:;" class="text-secondary font-weight-normal text-xl" data-toggle="tooltip" data-original-title="Edit user">
+                    Visualizar Devocionais
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</section>
+
+<div class="container mt-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if page.has_previous %}
+      <li class="page-item"><a class="page-link" href="{% url 'view_the_cloud' %}?page={{page.previous_page_number}}"><</a></li>
+      {% endif %}
+      {% if page.has_next %}
+      <li class="page-item"><a class="page-link" href="{% url 'view_the_cloud' %}?page={{page.next_page_number}}">></a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+  
+
 <section class="py-7">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mx-auto text-center">
-        
+  
         <h2 class="mb-0">Pesquisa por palavra</h2>
         <form action="{% url 'view_the_cloud' %}" method="POST">{% csrf_token %}
           <div class="input-group input-group-outline my-3">

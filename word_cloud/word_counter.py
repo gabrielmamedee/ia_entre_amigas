@@ -2,8 +2,7 @@ import os
 import docx2txt
 import re
 from collections import Counter
-
-
+import pandas as pd
 import black_list
 
 pasta = "devocionais"
@@ -80,5 +79,15 @@ with open(caminho_saida, "w") as arquivo_saida:
     arquivo_saida.write("      legend: {\n")
     arquivo_saida.write("        display: false } } } });")
 
+caminho_excel = "import_data.xlsx"
 
-print (palavras_comuns [200])
+
+# Criar um DataFrame pandas com as palavras e suas frequências
+df = pd.DataFrame(palavras_comuns, columns=['key', 'frequencia'])
+
+# Filtrar as palavras de acordo com as condições desejadas
+df = df[(df['frequencia'] > 3) & (df['key'].str.len() > 2) & (~df['key'].isin(black_list.blacklist))]
+
+
+# Salvar os dados em uma tabela Excel
+df.to_excel(caminho_excel, index=False)

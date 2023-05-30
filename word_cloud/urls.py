@@ -2,5 +2,6 @@ from django.urls import path
 from . import views 
 
 urlpatterns = [
-    path('', views.view_the_cloud, name="view_the_cloud")
+    path('', views.view_the_cloud, name="view_the_cloud"),
+    path('importar_dados/', views.importar_dados, name='importar_dados')
 ]
