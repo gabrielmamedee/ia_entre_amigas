@@ -3,6 +3,7 @@ import docx2txt
 import re
 from collections import Counter
 
+
 import black_list
 
 pasta = "devocionais"
@@ -32,28 +33,28 @@ with open(caminho_saida, "w") as arquivo_saida:
     for palavra, frequencia in palavras_comuns:
         if frequencia > 3 and len(palavra) > 2 and palavra not in black_list.blacklist:
             if contador == 0:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 10 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 10, frequencia: {frequencia} }},\n')
                 contador += 1
             elif contador == 1:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 8 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 8, frequencia: {frequencia} }},\n')
                 contador += 1
             elif contador > 1 and contador <= 5:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 7 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 7, frequencia: {frequencia} }},\n')
                 contador += 1
             elif contador > 5 and contador <= 8:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 5 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 5, frequencia: {frequencia} }},\n')
                 contador += 1
             elif contador > 8 and contador <= 11:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 4 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 4, frequencia: {frequencia} }},\n')
                 contador += 1
             elif contador > 11 and contador <= 35:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 3 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 3, frequencia: {frequencia} }},\n')
                 contador += 1
             elif contador > 35 and contador <= 125:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 2 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 2, frequencia: {frequencia} }},\n')
                 contador += 1
             elif contador > 125 and contador <= 200:
-                arquivo_saida.write(f'  {{ key: "{palavra}", value: 1 }},\n')
+                arquivo_saida.write(f'  {{ key: "{palavra}", value: 1, frequencia: {frequencia} }},\n')
                 contador += 1
             if contador == limite_palavras:
                 break
@@ -78,3 +79,6 @@ with open(caminho_saida, "w") as arquivo_saida:
     arquivo_saida.write("    plugins: {\n")
     arquivo_saida.write("      legend: {\n")
     arquivo_saida.write("        display: false } } } });")
+
+
+print (palavras_comuns [200])

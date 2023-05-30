@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class Palavra(models.Model):
+    key = models.CharField(max_length=255)
+    value = models.IntegerField()
+    frequencia = models.IntegerField()
