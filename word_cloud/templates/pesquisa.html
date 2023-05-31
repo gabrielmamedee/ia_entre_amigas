@@ -483,6 +483,7 @@
         
           <h2 class="text-white">Resultado da busca pela palavra:</h2>
           <h1 class="text-white">{{ search_word }}</h1>
+          <a class="mt-2" href="#buscar"><button class="btn btn-primary btn-lg">Perquisar outra palavra</button></a>
         
       </div>
     </div>
@@ -533,12 +534,15 @@
 <section class="py-7">
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 mx-auto text-center">
+      <div id="buscar" class="col-lg-6 mx-auto text-center">
         
         <h2 class="mb-0">Pesquisa por palavra</h2>
-        <form method="post" action="{% url 'search_files' %}">
-          {% csrf_token %}
-          {{ form }}
+        <form action="{% url 'search_files' %}" method="POST">{% csrf_token %}
+          <div class="input-group input-group-outline my-3">
+            {{ form }}
+            <label class="form-label" for="input_valor">Digite a palavra desejada</label>
+            <input type="text" class="form-control" id="input_valor" name="search_word">
+          </div>
           <button type="submit" class="btn btn-primary btn-lg">Perquisar</button>
         </form>
       </div>

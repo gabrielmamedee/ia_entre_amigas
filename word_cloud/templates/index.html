@@ -534,9 +534,12 @@
           </div>
           <button type="submit" class="btn btn-primary btn-lg">Perquisar</button>
       </form>-->
-      <form method="post" action="{% url 'search_files' %}">
-        {% csrf_token %}
-        {{ form }}
+      <form action="{% url 'search_files' %}" method="POST">{% csrf_token %}
+        <div class="input-group input-group-outline my-3">
+          {{ form }}
+          <label class="form-label" for="input_valor">Digite a palavra desejada</label>
+          <input type="text" class="form-control" id="input_valor" name="search_word">
+        </div>
         <button type="submit" class="btn btn-primary btn-lg">Perquisar</button>
       </form>
       </div>
@@ -700,20 +703,15 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mx-auto text-center">
-  
         <h2 class="mb-0">Pesquisa por palavra</h2>
-        <!--<form action="{% url 'view_the_cloud' %}" method="POST">{% csrf_token %}
+        <form action="{% url 'search_files' %}" method="POST">{% csrf_token %}
           <div class="input-group input-group-outline my-3">
+            {{ form }}
             <label class="form-label" for="input_valor">Digite a palavra desejada</label>
-            <input type="text" class="form-control" id="input_valor" name="valor">
+            <input type="text" class="form-control" id="input_valor" name="search_word">
           </div>
           <button type="submit" class="btn btn-primary btn-lg">Perquisar</button>
-      </form>-->
-      <form method="post" action="{% url 'search_files' %}">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn btn-primary btn-lg">Perquisar</button>
-      </form>
+        </form>
       </div>
     </div>
   <!--<div class="row mt-6">
