@@ -1,0 +1,19 @@
+<table>
+    <thead>
+      <tr>
+        <th>Nome do Arquivo</th>
+        <th>Número de Ocorrências</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in results %}
+        <tr>
+          <td>{{ result.name }}</td>
+          <td>{{ result.count }}</td>
+          <td><a href="{{ result.path.url }}">Baixar</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  

@@ -1,10 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
+from django.core.paginator import Paginator
+from django.http import FileResponse
+from .forms import SearchForm
+from .models import Palavra
+from docx import Document
+import pandas as pd
+import codecs
 import json
 import os
-import pandas as pd
-from .models import Palavra
-from django.core.paginator import Paginator
+
+
 
 
 def view_the_cloud(request):
@@ -50,3 +56,42 @@ def importar_dados(request):
 
     # Retornar uma resposta adequada, como uma mensagem de sucesso
     return HttpResponse('Dados importados com sucesso!')
+
+
+def search_files(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            search_word = form.cleaned_data['search_word']
+            results = []
+
+            # Diretório onde os arquivos estão localizados
+            directory = 'word_cloud/devocionais'
+
+            # Pesquisar arquivos com base na palavra fornecida
+            for root, dirs, files in os.walk(directory):
+                for filename in files:
+                    if filename.endswith('.docx'):
+                        file_path = os.path.join(root, filename)
+                        doc = Document(file_path)
+                        file_content = '\n'.join([paragraph.text for paragraph in doc.paragraphs])
+                        #print(f"Searching file: {filename}")
+                        #print(f"Content: {file_content}")
+                        count = file_content.lower().count(search_word.lower())  # Contar ocorrências (ignorando maiúsculas e minúsculas)
+                        if count > 0:
+                            results.append({
+                                'name': filename,
+                                'path': file_path,
+                                'count': count,
+                            })
+
+            # Ordenar resultados em ordem decrescente com base no número de ocorrências
+            results = sorted(results, key=lambda x: x['count'], reverse=True)
+
+            #print(results)
+            return render(request, 'pesquisa.html', {'results': results, 'search_word' : search_word})
+
+    else:
+        form = SearchForm()
+
+    return render(request, 'app/search.html', {'form': form})
