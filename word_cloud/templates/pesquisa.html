@@ -519,10 +519,10 @@
                     <h6 class="mb-0">{{ result.count }}</h6>
                 </td>
                 <td class="align-middle">
-                  <a href="{{ result.path.url }}">Visualizar</a>
+                  <a target="_blank" href="{{ result.link }}">Visualizar</a>
                 </td>
                 <td class="align-middle">
-                  <a href="{{ result.path.url }}">Baixar</a>
+                  <a target="_blank" href="{{ result.download_link }}">Baixar</a>
                 </td>
               </tr>
               {% endfor %}  

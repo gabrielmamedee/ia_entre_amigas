@@ -81,26 +81,28 @@ def search_files(request):
                         file_path = os.path.join(root, filename)
                         doc = Document(file_path)
                         file_content = '\n'.join([paragraph.text for paragraph in doc.paragraphs])
-                        #print(f"Searching file: {filename}")
-                        #print(f"Content: {file_content}")
                         count = file_content.lower().count(search_word.lower())  # Contar ocorrências (ignorando maiúsculas e minúsculas)
                         if count > 0:
-                            results.append({
-                                'name': filename,
-                                'path': file_path,
-                                'count': count,
-                            })
+                            # Consultar o banco de dados para obter o link e o link de download
+                            drive_file = Drive_arquivo.objects.filter(nome=filename).first()
+                            if drive_file:
+                                results.append({
+                                    'name': filename,
+                                    'path': file_path,
+                                    'count': count,
+                                    'link': drive_file.link,
+                                    'download_link': drive_file.link_download,
+                                })
 
             # Ordenar resultados em ordem decrescente com base no número de ocorrências
             results = sorted(results, key=lambda x: x['count'], reverse=True)
 
-            #print(results)
-            return render(request, 'pesquisa.html', {'results': results, 'search_word' : search_word})
+            return render(request, 'pesquisa.html', {'results': results, 'search_word': search_word})
 
     else:
         form = SearchForm()
 
-    return render(request, 'app/search.html', {'form': form})
+    return render(request, 'pesquisa.html', {'form': form})
 
 
 #API Google Drive
