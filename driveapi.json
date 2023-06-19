@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "entre-amigas-devo-74730",
+  "private_key_id": "cbf0418aadfb7186271809c44d9cf5d04b934c87",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCVdC3DGLWgdp0b\nT3m6hTV6Ir1EjHEw6PRqvVmeb7hHtDckdRwoq9Zsw2UpyhdEsqF7sbfI8U/55J1L\nlis3uRW0ZCx6MRI8+u5PyxYUpcNTY4xG1hDeyMG4xYP5biwnUmrlE4nAM2LrcuOH\nMJZJN0p+ncjyGNqdUPxxZ6K19X/fwpoSXFgVjeq9xXqwuVfgWzkof4G8kEQQoroo\npx+bvfd/3Hj23yLZZYSBbykEJ9Bop4yKosObVXYwQuKgf6KrssZymppacRQJXZTQ\nFI4dZKroyeU6YdQl4eYHCKA0BocYsoZ9VwfHA7ye9K/9DVlSYYt7MN2yBaHN0UFi\nJTeY9bJRAgMBAAECggEAEI4PeaJ1kAJDkeBiWAZkb5SEiaDS8vuDA4XY9QNkEtFE\nIG42gczTEjYssQ3ZOPtehuCfPot4c/JeeB54yBHg9Rv5j0l7PzT+i+kvl3brJYQL\n6FbTBJKRXuHGJi2Nh4eKHrjk09z9Up5l1LZNl2uf/VmGBkc5hB6R8A/uRqCcmxD8\nfbHn9SOxlTx4MHqjW7YNuZ4DjroLyOmb5ziFFEc0tImtfsAc302TeWhuiFH9xfan\nhsANfhGxD9/GkO2cu1SWXDpE9aA39luGKHMuMybSCqCzJe21akJEmK0Qi9VcZQFk\nFOFgSyTlfUQnyHcxjelfZrhDxshfyv7wfmwsOuJzVwKBgQDI03iwRjn86X/S3cPH\nFtd51Xl2j9SgtujuXSldPsiy2pGN3f0OUbBtyfNVlxhBdB2N5sL9oStGcB+DI+/B\nI625KbNibvXg04DCpmQmSDi74BUMDddwGAltFAe/nb6+my22C+8ByjhLM3QMPyzC\nShhCF7W5afi3RVJsmdP35uHWawKBgQC+g5Zi63aafCCmAoBac1CHSJg5l2vDsG0n\n7a67BIXwmkbYHCistyg3Y7eQwBJbzmLDgWsTZTPcpfXU2ybb1pO0y8OKy1Tq7xH/\nrBD4nZO1kqs6qDwOnDfU8A2eEJjq+7yZWdDtlX/VAAeqDLqOkLVKKUELUBFW0PkB\nD70v3CixMwKBgGn9EckWhywvn8KOP/Em4Pnv7HbiWfmoDy8eA+KubAXYzNDuw8t2\n2YJX/xDA+ZAx1Bc8HtT05n36VudDZBmu1tTOaVod7a6GcYJJhrmdjDO7g+Akvfru\n9KqY064RdsXp6CoYCkALlcI6mZiNDvZLXJolIUeF4jn3YBTo6rH/LFmZAoGBALOP\ngImBVkrqnTb6epFFyGuJf3gggIBzY55ThfFcpQUN06HSgH+xLWVvRc9XSLZgwnN0\nIkCojQX1IctaNrjS+GpZ9tZ1KHc5luQ7/87jbhmfwGVLtTcsA+9dxefpyscHN03t\n+l5DHrXaDl83GgpO15+rXFPWRlFmKprWg8B9J5lDAoGAcQPLCtBIFYqz7zhkcedk\nM/gLlTW06k+BWueZOKSGW2Zm2XWGZnh8xtB7HfU1LtT9nMevHMOS2GyY25iCCSox\nufYLGRFjApQ7UcgMn5ri4RbkqQBrhGDME0ScckzfGovHP9l0jhaAajskK86P+gOA\nrYDTN9cFv/lWRrAeAjXW3OA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "googledrive@entre-amigas-devo-74730.iam.gserviceaccount.com",
+  "client_id": "113822255613515986305",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/googledrive%40entre-amigas-devo-74730.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

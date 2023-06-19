@@ -10,6 +10,12 @@ import codecs
 import json
 import os
 
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaIoBaseDownload
+from django.conf import settings
+from django.http import JsonResponse
+from .models import Drive_arquivo
 
 
 
@@ -95,3 +101,41 @@ def search_files(request):
         form = SearchForm()
 
     return render(request, 'app/search.html', {'form': form})
+
+
+#API Google Drive
+def get_drive_files(request):
+    credentials = service_account.Credentials.from_service_account_file(
+        os.path.join(settings.BASE_DIR, settings.GOOGLE_DRIVE_SERVICE_ACCOUNT_FILE),
+        scopes=settings.GOOGLE_DRIVE_SCOPES
+    )
+    drive_service = build('drive', 'v3', credentials=credentials)
+
+    page_token = None
+    file_data = []
+    while True:
+        results = drive_service.files().list(fields="nextPageToken, files(name,webViewLink,webContentLink)", pageToken=page_token).execute()
+        files = results.get('files', [])
+
+        for file in files:
+            file_data.append({
+                'name': file['name'],
+                'link': file.get('webViewLink', ''),
+                'download_link': file.get('webContentLink', '')
+            })
+
+        page_token = results.get('nextPageToken')
+        if not page_token:
+            break
+
+    # Apagar todos os registros existentes
+    Drive_arquivo.objects.all().delete()
+
+    for file_info in file_data:
+        Drive_arquivo.objects.create(
+            nome=file_info['name'],
+            link=file_info['link'],
+            link_download=file_info['download_link']
+        )
+
+    return JsonResponse({'message': 'Dados inseridos com sucesso.'})
